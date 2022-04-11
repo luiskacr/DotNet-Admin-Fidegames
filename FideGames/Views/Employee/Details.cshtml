@@ -1,0 +1,156 @@
+﻿@model FideGames.Models.Employee
+
+@{
+    ViewBag.Title = "Detalles del Empleado";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if (ViewBag.Mensaje == "" | ViewBag.Mensaje == null)
+{
+}
+else
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <strong>Exitoso!</strong>
+        <span class="aria-hidden">@Html.ViewBag.Mensaje</span>
+    </div>
+
+}
+<div class="card-body card shadow mb-4">
+    <style>
+        .card-title {
+            padding-bottom: 15px;
+            background: #040FD9;
+            color: #fff;
+            padding: 16px 30px;
+            min-width: 100%;
+            margin: -20px -25px 10px;
+            border-radius: 3px 3px 0 0;
+        }
+    </style>
+    <div class="card-title">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Detalles del Empleado</h2>
+            </div>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label class="text-dark">Nombre</label>
+                <input disabled class="form-control" id="colFormLabel" placeholder="@Html.DisplayFor(model => model.firstName)">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label class="text-dark">Apellido</label>
+                <input disabled class="form-control" id="colFormLabel" placeholder="@Html.DisplayFor(model => model.lastName)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label class="text-dark">Genero</label>
+                <input disabled class="form-control" id="colFormLabel" placeholder="@Html.DisplayFor(model => model.gender)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @{
+                //Convertidor de Formato de Fecha
+                DateTime thisDate = Convert.ToDateTime(Model.birthDate);
+                String birthDate = thisDate.ToString("d");
+            }
+            <div class="col-md-10">
+                <label class="text-dark">Fecha de Nacimiento</label>
+                <input disabled class="form-control" id="colFormLabel" placeholder="@birthDate">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @{
+                //Convertidor de Formato de Fecha
+                DateTime thishire = Convert.ToDateTime(Model.hireDate);
+                String hireDate = thishire.ToString("d");
+            }
+            <div class="col-md-10">
+                <label class="text-dark">Fecha de Contratacion</label>
+                <input disabled class="form-control" id="colFormLabel" placeholder="@hireDate">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label class="text-dark">Salario</label>
+                <input disabled class="form-control" id="colFormLabel" placeholder="₡  @Html.DisplayFor(model => model.salary)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @if (Model.firstName == "Admin")
+                {
+
+                }
+                else
+                {
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.employeeId }, new { @class = "btn btn-warning" })
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                        Eliminar
+                    </button>
+                }
+
+            </div>
+            <div class="col-md-10 mt-3">
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fas fa-exclamation-triangle" style="color:red;"></i>
+                    Advertencia
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Esta Seguro que desea Eliminar el Empleado @Html.DisplayFor(model => model.firstName) ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+                @using (Html.BeginForm("Delete", "Employee", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.employeeId)
+                    @Html.HiddenFor(model => model.firstName)
+                    @Html.HiddenFor(model => model.lastName)
+                    @Html.HiddenFor(model => model.gender)
+                    @Html.HiddenFor(model => model.birthDate)
+                    @Html.HiddenFor(model => model.hireDate)
+                    @Html.HiddenFor(model => model.salary)
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

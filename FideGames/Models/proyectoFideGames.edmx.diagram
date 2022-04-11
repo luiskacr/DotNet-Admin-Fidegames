@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="303e1caff14a44669589da61d50bf99d" Name="Diagram1">
+        <EntityTypeShape EntityType="proyectoFideGamesModel.brand_product" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.clients" Width="1.5" PointX="13.625" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.deparment_product" Width="1.5" PointX="0.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.Employee" Width="1.5" PointX="4.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.invoice" Width="1.5" PointX="9.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.invoice_detail" Width="1.5" PointX="5.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.invoice_status" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.type_product" Width="1.5" PointX="0.5" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__product__brand_i__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__invoice__user_id__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__product__deparme__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__invoice__invoice__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__invoice_d__id_in__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__invoice_d__produ__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__product__type_pr__208CD6FA" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.Roles" Width="1.5" PointX="10.5" PointY="4.5" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.Users" Width="1.5" PointX="7.25" PointY="3.375" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__Users__employeeI__3E1D39E1" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__invoice__seller__51300E55" />
+        <AssociationConnector Association="proyectoFideGamesModel.FK__Users__rol__3F115E1A" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" src="~/Imagenes/favicon.ico" />
+    <title>@ViewBag.Title</title>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link href="~/Content/boostrap home.css" rel="stylesheet" />
+    <!--Data Tables CSS-->
+    <link href="~/Scripts/Datatable/datatables.min.css" rel="stylesheet" />
+    <link href="~/Scripts/Datatable/DataTables-1.11.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+    <!--Boostrap DatePicker-->
+    <link href="~/Content/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+
+</head>
+<body id="page-top">
+    @if (Request.IsAuthenticated)
+    {
+
+        <!-- Page Wrapper -->
+        <div id="wrapper">
+            @Html.AntiForgeryToken()
+            <!-- Sidebar -->
+            <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #485461; background-image: linear-gradient(315deg, #485461 0%, #28313b 74%); ">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index", "Home")">
+                    <img src="~/Imagenes/logofidegames.png" width="75" class="rounded mx-auto d-block" />
+                </a>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item">
+                    <div class="nav-link">
+                        <i class="fas fa-home"></i>
+                        @Html.ActionLink("Inicio", "Index", "Home")
+                    </div>
+
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    CRM
+                </div>
+
+                <!-- Nav Item - Factura Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                       aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Facturas</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Generar :</h6>
+                            <a class="collapse-item" href="#">Generar Factura</a>
+                            <h6 class="collapse-header">Validar:</h6>
+                            <a class="collapse-item" href="#">Ver Facturas</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Nav Item - Clientes Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#">
+                        <i class="fas fa-user"></i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+
+                <!-- Nav Item - Productos Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                       aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-store"></i>
+                        <span>Productos</span>
+                    </a>
+                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Interno:</h6>
+                            <a class="collapse-item" href="#">Marcas</a>
+                            <a class="collapse-item" href="#">Departamentos</a>
+                            <a class="collapse-item" href="#">Tipos</a>
+                            <h6 class="collapse-header">Bodega:</h6>
+                            <a class="collapse-item" href="#">Productos</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Empleados
+                </div>
+                <!-- Nav Item - Empleados Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                       aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-users"></i>
+                        <span>Empleados</span>
+                    </a>
+                    <div id="collapsePages" class="collapse" aria-labelledby="headingUtilities"
+                         data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Interno:</h6>
+                            <a class="collapse-item" href="#">Usuarios</a>
+                            <a class="collapse-item" href="#">Roles</a>
+                            <h6 class="collapse-header">Empleados:</h6>
+                            <div class="collapse-item">
+                                @Html.ActionLink("Empleados", "Index", "Employee", null, new { @class = "text-dark" })
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Nav Item - Reportes Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Reportes</span>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- End of Sidebar -->
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown  -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                     aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                   placeholder="Search for..." aria-label="Search"
+                                                   aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        @HttpContext.Current.Session["name"].ToString()
+                                    </span>
+                                    @if (HttpContext.Current.Session["image"].ToString() == null || HttpContext.Current.Session["image"].ToString() == "")
+                                    {
+                                        <img class="img-profile rounded-circle" src="~/Imagenes/user-Icon.jpg">
+                                    }
+                                    else
+                                    {
+                                        <img class="img-profile rounded-circle" src="@HttpContext.Current.Session["image"].ToString()">
+                                    }
+
+                                </a>
+                                <!-- Dropdown - User Information -->
+
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                     aria-labelledby="userDropdown">
+                                    <div class="dropdown-item">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Html.ActionLink("Mi Perfil", "myProfile", "Home", new { id = Convert.ToInt32(HttpContext.Current.Session["id"].ToString()) }, new { @class = "text-dark" })
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+                                    <div class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Html.ActionLink("Cambiar Contraseña", "ChangePassword", "Home", new { id = Convert.ToInt32(HttpContext.Current.Session["id"].ToString()) }, new { @class = "text-dark" })
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Html.ActionLink("Cerrar Seccion", "logout", "Home", new { @class = "text-dark" })
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </nav>
+                    <!-- End of Topbar -->
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+                        @RenderBody()
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Programacion Avanzada &copy; Grupo 10</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <div class="err_page">
+                <div class="err_page_right">
+                    <img src="https://i.kym-cdn.com/entries/icons/original/000/002/144/You_Shall_Not_Pass!_0-1_screenshot.jpg" alt="" />
+                    <h1>500</h1>
+                    <h4>OOPS. Looks like you do not have access or you are not logged in</h4>
+                    <p>Don't worry. Since you're valuable to us we will bring you back to safety</p>
+                    @Html.ActionLink("Regresar", "Login", "Home")
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <!--Bootstrap-->
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!--Data Tables JS-->
+    <script src="~/Scripts/Datatable/datatables.min.js"></script>
+    <script src="~/Scripts/mainTables.js"></script>
+
+
+</body>
+</html>

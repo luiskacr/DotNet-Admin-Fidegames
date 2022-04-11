@@ -1,0 +1,125 @@
+﻿@model FideGames.Models.Users
+
+@{
+    ViewBag.Title = "myProfile";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["LoginUser"] = Model.userName;
+    ViewData["UserId"] = Model.userId;
+    var isActive = Model.user_active;
+}
+    <h1 class="h1. Bootstrap heading text-center mt-4">Mi Perfil</h1>
+
+    
+    <div class="container rounded bg-white mt-4 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    @if (HttpContext.Current.Session["image"].ToString() == null || HttpContext.Current.Session["image"].ToString() == "")
+                    {
+                        <img class="rounded-circle mt-5" width="150" src="~/Imagenes/user-Icon.jpg">
+                    }
+                    else
+                    {
+                        <img class="rounded-circle mt-5" width="150" src="@HttpContext.Current.Session["image"].ToString()">
+                    }
+
+                    <span class="font-weight-bold mt-3">@Html.DisplayFor(model => model.Employee.firstName)  @Html.DisplayFor(model => model.Employee.lastName)</span>
+                    <span class="font-weight-bold mt-3">@Html.DisplayFor(model => model.userName)</span>
+                </div>
+
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    </div>
+                    <div class="row mt-3">
+                        <div>
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Nombre: </label>
+                                <div class="">
+                                    <input disabled class="form-control" id="colFormLabel" placeholder="@Html.DisplayFor(model => model.Employee.firstName)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Apellido: </label>
+                                <div class="">
+                                    <input disabled class="form-control" id="colFormLabel" placeholder="@Html.DisplayFor(model => model.Employee.lastName)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Sexo: </label>
+                                <div class="">
+                                    <input disabled class="form-control" id="colFormLabel" placeholder="@Html.DisplayFor(model => model.Employee.gender)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Fechas de Nacimiento: </label>
+                                <div class="">
+                                    @{
+                                        //Convertidor de Formato de Fecha
+                                        DateTime thisDate = Convert.ToDateTime(Model.Employee.birthDate);
+                                        String birthDate = thisDate.ToString("d");
+                                    }
+                                    <input disabled class="form-control" id="colFormLabel" placeholder="@birthDate">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Fechas de Contratacion: </label>
+                                <div class="">
+                                    @{
+                                        //Convertidor de Formato de Fecha
+                                        DateTime thisDate2 = Convert.ToDateTime(Model.Employee.birthDate);
+                                        String hirehDate = thisDate2.ToString("d");
+                                    }
+                                    <input disabled class="form-control" id="colFormLabel" placeholder="@hirehDate">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Salario: </label>
+                                <div class="">
+                                    <input disabled class="form-control" id="colFormLabel" placeholder="₡ @Html.DisplayFor(model => model.Employee.salary)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Nombre de Usuario: </label>
+                                <div class="">
+                                    <input disabled class="form-control" id="colFormLabel" placeholder="@Html.DisplayFor(model => model.userName)">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <label lass="sr-only">Estatus: </label>
+                                <div class="">
+                                    @if (isActive == "1")
+                                    {
+
+                                        <input disabled class="form-control" id="colFormLabel" placeholder="Esta Activo">
+                                    }
+                                    else
+                                    {
+                                        <input disabled class="form-control" id="colFormLabel" placeholder="Esta Desactivado">
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mx-sm-3 mb-2">
+                                <p>
+                                    @Html.ActionLink("Cambiar Contraseña", "ChangePassword", new { id = Model.userId })
+                                    <br />
+                                    @Html.ActionLink("Volver al Inicio", "Index")
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
