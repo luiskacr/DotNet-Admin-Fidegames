@@ -74,6 +74,14 @@ CREATE TABLE invoice_status(
    invoice_status_name VARCHAR(80) NOT NULL
 );
 
+INSERT INTO invoice_status (invoice_status_name)
+VALUES('Creada'),
+('Pendiente de Pago'),
+('Pagada'),
+('Anulada'),
+('Completada');
+
+
 CREATE TABLE invoice(
     id_invoice int IDENTITY(1,1) PRIMARY KEY NOT NULL,
     user_id int NOT NULL FOREIGN KEY REFERENCES clients(client_id),

@@ -1,9 +1,10 @@
-﻿@model IEnumerable<FideGames.Models.Employee>
+﻿@model IEnumerable<FideGames.Models.invoice>
 
 @{
-    ViewBag.Title = "Empleados";
+    ViewBag.Title = "Facturas";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 
 @if (ViewBag.exito == "" | ViewBag.exito == null)
 {
@@ -66,36 +67,36 @@ else
     <div class="table-title">
         <div class="row">
             <div class="col-sm-6">
-                <h2>Lista de Empleados</h2>
+                <h2>Lista de Facturas</h2>
             </div>
             <div class="col-sm-6">
-
-                @Html.ActionLink("Crear Empleado", "Create", null, new { @class = "btn btn-primary btn-lg" })
+                @Html.ActionLink("Crear Factura", "Create", null, new { @class = "btn btn-primary btn-lg" })
             </div>
         </div>
 
     </div>
     <div class="table-responsive">
-        <table id="TableEmployee" class="table table-avance table-striped ">
+        <table id="TableInvoice" class="table table-avance table-striped ">
             <thead class="table-dark">
                 <tr>
+
                     <th class="">
-                        Nombre
-                    </th>
-                    <th class="">
-                        Apellido
+                        Vendedor
                     </th>
                     <th>
-                        Genero
+                        Cliente
                     </th>
                     <th>
-                        Fecha de Nacimiento
+                        Fecha de Venta
                     </th>
                     <th class="">
-                        Fecha de Contratacion
+                        Total de la Venta
                     </th>
                     <th class="">
-                        Salario
+                        Descuento
+                    </th>
+                    <th class="">
+                        Estado del Pago
                     </th>
                     <th class="text-center">
                         Accion
@@ -105,47 +106,31 @@ else
             <tbody class=" ">
                 @foreach (var item in Model)
                 {
-
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.firstName)
+                            @Html.DisplayFor(modelItem => item.Users.userName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.lastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.gender)
-                        </td>
-                        <td>
-                            @{
-                                //Convertidor de Formato de Fecha
-                                DateTime thisDate = Convert.ToDateTime(item.birthDate);
-                                String birthDate = thisDate.ToString("d");
+                            @{ 
+                                String clienteName = item.clients.client_name1 + item.clients.client_name2;
                             }
-                            @(birthDate)
+                            @clienteName   
                         </td>
                         <td>
-                            @{
-                                //Convertidor de Formato de Fecha
-                                DateTime thishire = Convert.ToDateTime(item.hireDate);
-                                String hireDate = thishire.ToString("d");
-                            }
-                            @hireDate
+                            @Html.DisplayFor(modelItem => item.date_sell)
                         </td>
                         <td>
-                            ₡  @Html.DisplayFor(modelItem => item.salary)
+                            ₡ @Html.DisplayFor(modelItem => item.sale_total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.payment_des)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.invoice_status1.invoice_status_name)
                         </td>
                         <td class="d-flex justify-content-center ">
-
-                            @if (item.firstName == "Admin")
-                            {
-                                @Html.ActionLink("Detalle", "Details", new { id = item.employeeId }, new { @class = "btn btn-primary" })
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Datalle", "Details", new { id = item.employeeId }, new { @class = "btn btn-primary mr-2" })
-                                @Html.ActionLink("Editar", "Edit", new { id = item.employeeId }, new { @class = "btn btn-primary" })
-                            }
+                            @Html.ActionLink("Editar", "Edit", new { id = item.id_invoice }, new { @class = "btn btn-primary mr-2" }) 
+                            @Html.ActionLink("Detalle", "Details", new { id = item.id_invoice }, new { @class = "btn btn-primary" }) 
                         </td>
                     </tr>
                 }
@@ -154,4 +139,5 @@ else
     </div>
 
 </div>
+
 

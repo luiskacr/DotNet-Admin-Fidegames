@@ -72,9 +72,11 @@
                             <h6 class="collapse-header">Generar :</h6>
                             <a class="collapse-item" href="#">Generar Factura</a>
                             <h6 class="collapse-header">Validar:</h6>
-                            <a class="collapse-item" href="#">Ver Facturas</a>
+                            <div class="collapse-item">
+                                @Html.ActionLink("Ver Facturas", "Index", "Invoice", null, new { @class = "text-dark" })
+                                </div>
+                            </div>
                         </div>
-                    </div>
                 </li>
 
                 <!-- Nav Item - Clientes Collapse Menu -->
@@ -239,7 +241,7 @@
                 </div>
                 <!-- End of Main Content -->
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <footer class="sticky-footer bg-white" style="position: fixed; height: 50px; bottom: 0; width: 100%; ">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
                             <span>Programacion Avanzada &copy; Grupo 10</span>
