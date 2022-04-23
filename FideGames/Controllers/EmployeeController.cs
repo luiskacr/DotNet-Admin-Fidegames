@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FideGames.Models;
+using FideGames.Controllers;
+using FideGames.Models.ViewModel;
 
 namespace FideGames.Controllers
 {
@@ -124,6 +126,54 @@ namespace FideGames.Controllers
 
                 ViewBag.error = "Error al Eliminar el empleado";
                 return RedirectToAction("Index",employee.employeeId);
+            }
+        }
+
+        public ActionResult CreateUser()
+        {
+            List<TablaViewModel> lista = null;
+            using (Models.proyectoFideGamesEntities1 db = new Models.proyectoFideGamesEntities1())
+            {
+                 lista =
+                    (from e in db.Roles
+                     select new TablaViewModel
+                     {
+                         rolId= e.rolId,
+                         rolName= e.roleName
+                     }).ToList();
+            }
+
+            List<SelectListItem> roles = lista.ConvertAll(e =>
+            {
+                return new SelectListItem()
+                {
+                    Text = e.rolName.ToString(),
+                    Value = e.rolId.ToString(),
+                    Selected = false
+                };
+            });
+
+            ViewBag.roles = roles;
+
+            return View();
+
+        }
+
+        // POST: Users/Create
+        [HttpPost]
+        public ActionResult CreateUser(Users users)
+        {
+            try
+            {
+                db.Users.Add(users);
+                db.SaveChanges();
+                ViewBag.exito = "Se ha creado el Usuario";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                ViewBag.error = "Error al Crear el usuario";
+                return View();
             }
         }
     }

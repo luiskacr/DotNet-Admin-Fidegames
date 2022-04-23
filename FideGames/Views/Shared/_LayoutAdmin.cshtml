@@ -125,7 +125,9 @@
                          data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Interno:</h6>
-                            <a class="collapse-item" href="#">Usuarios</a>
+                            <div class="collapse-item">
+                                @Html.ActionLink("Usuarios", "ListaUsers", "Users", null, new { @class = "text-dark" })   <!-- nombre en el menu, nombre de vista, controlador -->
+                            </div>
                             <a class="collapse-item" href="#">Roles</a>
                             <h6 class="collapse-header">Empleados:</h6>
                             <div class="collapse-item">
@@ -277,7 +279,7 @@
     <!--Data Tables JS-->
     <script src="~/Scripts/Datatable/datatables.min.js"></script>
     <script src="~/Scripts/mainTables.js"></script>
-
+             
 
 </body>
 </html>
