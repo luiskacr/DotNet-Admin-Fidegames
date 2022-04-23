@@ -80,6 +80,9 @@ else
             <thead class="table-dark">
                 <tr>
                     <th class="">
+                        Id de empleado
+                    </th>
+                    <th class="">
                         Nombre
                     </th>
                     <th class="">
@@ -106,48 +109,52 @@ else
                 @foreach (var item in Model)
                 {
 
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.firstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.lastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.gender)
-                        </td>
-                        <td>
-                            @{
-                                //Convertidor de Formato de Fecha
-                                DateTime thisDate = Convert.ToDateTime(item.birthDate);
-                                String birthDate = thisDate.ToString("d");
-                            }
-                            @(birthDate)
-                        </td>
-                        <td>
-                            @{
-                                //Convertidor de Formato de Fecha
-                                DateTime thishire = Convert.ToDateTime(item.hireDate);
-                                String hireDate = thishire.ToString("d");
-                            }
-                            @hireDate
-                        </td>
-                        <td>
-                            ₡  @Html.DisplayFor(modelItem => item.salary)
-                        </td>
-                        <td class="d-flex justify-content-center ">
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.employeeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gender)
+                    </td>
+                    <td>
+                        @{
+                            //Convertidor de Formato de Fecha
+                            DateTime thisDate = Convert.ToDateTime(item.birthDate);
+                            String birthDate = thisDate.ToString("d");
+                        }
+                        @(birthDate)
+                    </td>
+                    <td>
+                        @{
+                            //Convertidor de Formato de Fecha
+                            DateTime thishire = Convert.ToDateTime(item.hireDate);
+                            String hireDate = thishire.ToString("d");
+                        }
+                        @hireDate
+                    </td>
+                    <td>
+                        ₡  @Html.DisplayFor(modelItem => item.salary)
+                    </td>
+                    <td class="d-flex justify-content-center ">
 
-                            @if (item.firstName == "Admin")
-                            {
-                                @Html.ActionLink("Detalle", "Details", new { id = item.employeeId }, new { @class = "btn btn-primary" })
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Datalle", "Details", new { id = item.employeeId }, new { @class = "btn btn-primary mr-2" })
-                                @Html.ActionLink("Editar", "Edit", new { id = item.employeeId }, new { @class = "btn btn-primary" })
-                            }
-                        </td>
-                    </tr>
+                        @if (item.firstName == "Admin")
+                        {
+                            @Html.ActionLink("Detalle", "Details", new { id = item.employeeId }, new { @class = "btn btn-primary" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Crear Usuario", "CreateUser", new { id = item.employeeId }, new { @class = "btn btn-primary mr-2" })
+                            @Html.ActionLink("Datalle", "Details", new { id = item.employeeId }, new { @class = "btn btn-primary mr-2" })
+                            @Html.ActionLink("Editar", "Edit", new { id = item.employeeId }, new { @class = "btn btn-primary" })
+                        }
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

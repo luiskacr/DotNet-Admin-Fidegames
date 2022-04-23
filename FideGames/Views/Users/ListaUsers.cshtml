@@ -1,0 +1,117 @@
+﻿@model IEnumerable<FideGames.Models.Users>
+
+@{
+    ViewBag.Title = "ListaUsers";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@if (ViewBag.exito == "" | ViewBag.exito == null)
+{
+
+}
+else
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <span class="aria-hidden">@Html.ViewBag.exito</span>
+    </div>
+
+}
+@if (ViewBag.error == "" | ViewBag.error == null)
+{
+
+}
+else
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <span class="aria-hidden">@ViewBag.error</span>
+    </div>
+
+}
+
+<div class="card-body card shadow mb-4">
+    <style>
+        .table-title {
+            padding-bottom: 15px;
+            background: #040FD9;
+            color: #fff;
+            padding: 16px 30px;
+            min-width: 100%;
+            margin: -20px -25px 10px;
+            border-radius: 3px 3px 0 0;
+        }
+
+            .table-title h2 {
+                margin: 5px 0 0;
+                font-size: 24px;
+            }
+
+            .table-title .btn-group {
+                float: right;
+            }
+
+            .table-title .btn {
+                color: #fff;
+                float: right;
+                font-size: 13px;
+                border: none;
+                min-width: 50px;
+                border-radius: 2px;
+                border: none;
+                outline: none !important;
+                margin-left: 10px;
+            }
+    </style>
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Lista de Usuario</h2>
+            </div>
+        </div>
+
+    </div>
+    <div class="table-responsive">
+        <table id="TableEmployee" class="table table-avance table-striped ">
+            <thead class="table-dark">
+                <tr>
+                    <th class="">
+                        Nombre de usuario
+                    </th>
+                    <th class="">
+                        Nombre del Empleado
+                    </th>
+                    <th class="">
+                        Rol asignado
+                    </th>
+                    <th class="d-flex justify-content-center ">
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody class=" ">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.userName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Employee.firstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Roles.roleName)
+                        </td>
+                        <td class="d-flex justify-content-center ">
+                            @Html.ActionLink("Editar", "Editar", new { id = item.userId }, new { @class = "btn btn-primary mr-2" }) 
+                            @Html.ActionLink("Detalles", "Detallar", new { id = item.userId }, new { @class = "btn btn-primary mr-2" }) 
+                            @Html.ActionLink("Eliminar", "EliminarUsers", new { id = item.userId }, new { @class = "btn btn-primary mr-2" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
