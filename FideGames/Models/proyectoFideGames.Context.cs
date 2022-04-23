@@ -12,6 +12,8 @@ namespace FideGames.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class proyectoFideGamesEntities1 : DbContext
     {
@@ -37,5 +39,14 @@ namespace FideGames.Models
         public virtual DbSet<type_product> type_product { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+    
+        public virtual ObjectResult<USP_SEL_EMPLOYEE_Result> USP_SEL_EMPLOYEE(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<USP_SEL_EMPLOYEE_Result>("USP_SEL_EMPLOYEE", iDParameter);
+        }
     }
 }

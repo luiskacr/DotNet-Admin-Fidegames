@@ -27,8 +27,8 @@ namespace FideGames.Controllers
         public ActionResult Details(int id)
         {
             DetailInvoiceViewData data = new DetailInvoiceViewData();
-            invoice invoice = db.invoice.Find(id);
-            IEnumerable<invoice_detail> detailsList = (from invoice_detail in db.invoice_detail
+                invoice invoice = db.invoice.Find(id);
+            IEnumerable<invoice_detail> detailsList =  (from invoice_detail in db.invoice_detail
                                                        where invoice_detail.id_invoice == id
                                                        select invoice_detail).ToList();
             data.invoice = invoice;

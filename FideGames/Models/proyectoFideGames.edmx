@@ -242,6 +242,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="USP_SEL_EMPLOYEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="proyectoFideGamesModelStoreContainer">
           <EntitySet Name="brand_product" EntityType="Self.brand_product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
@@ -551,6 +554,9 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <FunctionImport Name="USP_SEL_EMPLOYEE" ReturnType="Collection(proyectoFideGamesModel.USP_SEL_EMPLOYEE_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Roles">
           <Key>
@@ -611,6 +617,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="USP_SEL_EMPLOYEE_Result">
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="75" />
+          <Property Type="Int32" Name="Salario" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -746,6 +756,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="USP_SEL_EMPLOYEE" FunctionName="proyectoFideGamesModel.Store.USP_SEL_EMPLOYEE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="proyectoFideGamesModel.USP_SEL_EMPLOYEE_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
