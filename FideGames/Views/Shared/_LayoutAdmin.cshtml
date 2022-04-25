@@ -128,7 +128,15 @@
                             <div class="collapse-item">
                                 @Html.ActionLink("Usuarios", "ListaUsers", "Users", null, new { @class = "text-dark" })   <!-- nombre en el menu, nombre de vista, controlador -->
                             </div>
-                            <a class="collapse-item" href="#">Roles</a>
+                            <div class="collapse-item">
+                                @Html.ActionLink("Roles de Sistema", "ListaRoles", "Roles", null, new { @class = "text-dark" })
+                            </div>
+                            <div class="collapse-item">
+                                @Html.ActionLink("Marcas", "Listabrand_product", "Brand_product", null, new { @class = "text-dark" })
+                            </div>
+                            <div class="collapse-item">
+                                @Html.ActionLink("Departamentos", "Listadeparment_product", "Deparment_product", null, new { @class = "text-dark" })
+                            </div>
                             <h6 class="collapse-header">Empleados:</h6>
                             <div class="collapse-item">
                                 @Html.ActionLink("Empleados", "Index", "Employee", null, new { @class = "text-dark" })

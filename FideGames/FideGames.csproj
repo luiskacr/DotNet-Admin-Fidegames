@@ -291,9 +291,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Clases\Converter.cs" />
     <Compile Include="Clases\DetailInvoiceViewData.cs" />
+    <Compile Include="Controllers\Brand_productController.cs" />
+    <Compile Include="Controllers\Deparment_productController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -349,7 +352,6 @@
     <Compile Include="Models\Users.cs">
       <DependentUpon>proyectoFideGames.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ViewModel\TablaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -405,7 +407,20 @@
     <Content Include="Views\Employee\CreateUser.cshtml" />
     <Content Include="Views\Users\ListaUsers.cshtml" />
     <Content Include="Views\Users\Detallar.cshtml" />
+    <Content Include="Views\Users\EditarUsers.cshtml" />
     <Content Include="Views\Users\EliminarUsers.cshtml" />
+    <Content Include="Views\Roles\ListaRoles.cshtml" />
+    <Content Include="Views\Roles\CrearRol.cshtml" />
+    <Content Include="Views\Roles\DetallarRol.cshtml" />
+    <Content Include="Views\Roles\EditarRol.cshtml" />
+    <Content Include="Views\Brand_product\Listabrand_product.cshtml" />
+    <Content Include="Views\Brand_product\Crearbrand_product.cshtml" />
+    <Content Include="Views\Brand_product\Detallarbrand_product.cshtml" />
+    <Content Include="Views\Brand_product\Editarbrand_product.cshtml" />
+    <Content Include="Views\Deparment_product\Listadeparment_product.cshtml" />
+    <Content Include="Views\Deparment_product\Creardeparment_product.cshtml" />
+    <Content Include="Views\Deparment_product\Detallardeparment_product.cshtml" />
+    <Content Include="Views\Deparment_product\Editardeparment_product.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

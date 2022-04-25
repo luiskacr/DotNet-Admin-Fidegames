@@ -1,7 +1,7 @@
-﻿@model IEnumerable<FideGames.Models.Users>
+﻿@model IEnumerable<FideGames.Models.deparment_product>
 
 @{
-    ViewBag.Title = "ListaUsers";
+    ViewBag.Title = "Listadeparment_product";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @if (ViewBag.exito == "" | ViewBag.exito == null)
@@ -65,7 +65,10 @@ else
     <div class="table-title">
         <div class="row">
             <div class="col-sm-6">
-                <h2>Lista de Usuario</h2>
+                <h2>Departamentos de productos</h2>
+            </div>
+            <div class="col-sm-6">
+                @Html.ActionLink("Agregar nuevo departamento de productos", "Creardeparment_product", null, new { @class = "btn btn-primary btn-lg" })
             </div>
         </div>
 
@@ -75,13 +78,7 @@ else
             <thead class="table-dark">
                 <tr>
                     <th class="">
-                        Nombre de usuario
-                    </th>
-                    <th class="">
-                        Nombre del Empleado
-                    </th>
-                    <th class="">
-                        Rol asignado
+                        Nombre de departamento de productos
                     </th>
                     <th class="d-flex justify-content-center ">
                         Acciones
@@ -93,17 +90,11 @@ else
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.userName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Employee.firstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Roles.roleName)
+                            @Html.DisplayFor(modelItem => item.deparment_product_name)
                         </td>
                         <td class="d-flex justify-content-center ">
-                            @Html.ActionLink("Editar", "EditarUsers", new { id = item.userId }, new { @class = "btn btn-primary mr-2" }) 
-                            @Html.ActionLink("Detalles", "Detallar", new { id = item.userId }, new { @class = "btn btn-primary mr-2" }) 
+                            @Html.ActionLink("Editar", "Editardeparment_product", new { id = item.deparment_product_id }, new { @class = "btn btn-primary mr-2" })
+                            @Html.ActionLink("Detalles", "Detallardeparment_product", new { id = item.deparment_product_id }, new { @class = "btn btn-primary mr-2" })
                         </td>
                     </tr>
                 }
@@ -112,5 +103,3 @@ else
     </div>
 
 </div>
-
-

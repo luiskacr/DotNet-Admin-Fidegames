@@ -74,7 +74,7 @@ else
         <div class="form-group">
             <div class="col-md-10">
 
-                @Html.ActionLink("Editar", "Edit", new { id = Model.employeeId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Editar", "EditarUsers", new { id = Model.employeeId }, new { @class = "btn btn-warning" })
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                     Eliminar
                 </button>
@@ -100,27 +100,31 @@ else
                 </button>
             </div>
             <div class="modal-body">
-                Esta Seguro que desea Eliminar el Usuario @Html.DisplayFor(model => model.userName) ?
+                Esta Seguro que desea Eliminar el Usuario: @Html.DisplayFor(model => model.userName) ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 
                 @using (Html.BeginForm("EliminarUsers", "Users", FormMethod.Post))
                 {
+
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.userName)
                     @Html.HiddenFor(model => model.password)
+                    @Html.HiddenFor(model => model.user_active)
                     @Html.HiddenFor(model => model.userImage)
-                    @Html.HiddenFor(model => model.employeeId)
+                    @Html.HiddenFor(model => model.Employee.firstName)
                     @Html.HiddenFor(model => model.Roles.roleName)
 
-                    <div class="form-actions no-color">
-                        <input type="submit" value="Eliminar" class="btn btn-danger" />
-                    </div>
+            <div class="form-actions no-color">
+                @Html.ActionLink("Eliminar", "EliminarUsers", new { id = Model.userId }, new { @class = "btn btn-danger" })    <!-- el boton lo cambie para poder enviar por parametro el userId-->
+            </div>
                 }
 
             </div>
         </div>
     </div>
 </div>
+
+
 

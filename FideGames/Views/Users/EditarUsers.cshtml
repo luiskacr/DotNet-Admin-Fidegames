@@ -1,10 +1,9 @@
 ﻿@model FideGames.Models.Users
 
 @{
-    ViewBag.Title = "CreateUser";
+    ViewBag.Title = "EditarUsers";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
 @if (ViewBag.error == "" | ViewBag.error == null)
 {
 
@@ -32,19 +31,21 @@ else
     <div class="card-title">
         <div class="row">
             <div class="col-sm-6">
-                <h2>Creacion de Usuario</h2>
+                <h2>Editar Datos del Usuario</h2>
             </div>
         </div>
     </div>
-    @using (Html.BeginForm("CreateUser", "Employee", FormMethod.Post))
+    @using (Html.BeginForm("EditarUsers", "Users", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-
+            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.userId)
+
             <div class="form-group">
-                <label class="text-dark">Nombre de Usuario</label>
+                <label class="text-dark">Nombre de usuario</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
@@ -60,7 +61,7 @@ else
             </div>
 
             <div class="form-group">
-                <label class="text-dark">Usuario Activo</label>
+                <label class="text-dark">Usuarios Activos</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.user_active, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.user_active, "", new { @class = "text-danger" })
@@ -68,7 +69,7 @@ else
             </div>
 
             <div class="form-group">
-                <label class="text-dark">Seleccione una imagen de Usuario</label>
+                <label class="text-dark">Imagen de usuario</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.userImage, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.userImage, "", new { @class = "text-danger" })
@@ -76,7 +77,7 @@ else
             </div>
 
             <div class="form-group">
-                <label class="text-dark">Seleccione el Nombre de Empleado</label>
+                <label class="text-dark">Nombre del empleado</label>
                 <div class="col-md-10">
                     @Html.DropDownList("employeeId", null, htmlAttributes: new { @class = "custom-select my-1 mr-sm-2" })
                     @Html.ValidationMessageFor(model => model.employeeId, "", new { @class = "text-danger" })
@@ -84,7 +85,7 @@ else
             </div>
 
             <div class="form-group">
-                <label class="text-dark">Selccione un Rol</label>
+                <label class="text-dark">Rol asignado</label>
                 <div class="col-md-10">
                     @Html.DropDownList("rol", null, htmlAttributes: new { @class = "custom-select my-1 mr-sm-2" })
                     @Html.ValidationMessageFor(model => model.rol, "", new { @class = "text-danger" })
@@ -93,16 +94,20 @@ else
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Crear Usuario" class="btn btn-primary" />
+                    <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
                 </div>
             </div>
             <div class="form-group">
-                <div>
-                    @Html.ActionLink("Mostrar Lista de Usuarios", "ListaUsers")
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Mostrar Lista de Usuario", "ListaUsers")
                 </div>
             </div>
-        </div>
-    }
 
+        </div>
+
+    }
 </div>
 
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
