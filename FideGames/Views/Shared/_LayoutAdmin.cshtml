@@ -70,12 +70,14 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Generar :</h6>
-                            <a class="collapse-item" href="#">Generar Factura</a>
+                            <div class="collapse-item">
+                                @Html.ActionLink("Generar Factura", "Create", "Invoice", null, new { @class = "text-dark" })
+                            </div>
                             <h6 class="collapse-header">Validar:</h6>
                             <div class="collapse-item">
                                 @Html.ActionLink("Ver Facturas", "Index", "Invoice", null, new { @class = "text-dark" })
-                                </div>
                             </div>
+                        </div>
                         </div>
                 </li>
 
@@ -144,16 +146,7 @@
                         </div>
                     </div>
                 </li>
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <!-- Nav Item - Reportes Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
-                        <i class="fas fa-chart-pie"></i>
-                        <span>Reportes</span>
-                    </a>
-                </li>
+                
 
             </ul>
             <!-- End of Sidebar -->

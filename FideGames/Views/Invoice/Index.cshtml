@@ -93,7 +93,7 @@ else
                         Total de la Venta
                     </th>
                     <th class="">
-                        Descuento
+                        Comentario
                     </th>
                     <th class="">
                         Estado del Pago
@@ -129,8 +129,15 @@ else
                             @Html.DisplayFor(modelItem => item.invoice_status1.invoice_status_name)
                         </td>
                         <td class="d-flex justify-content-center ">
-                            @Html.ActionLink("Editar", "Edit", new { id = item.id_invoice }, new { @class = "btn btn-primary mr-2" }) 
-                            @Html.ActionLink("Detalle", "Details", new { id = item.id_invoice }, new { @class = "btn btn-primary" }) 
+                            @if (item.invoice_status == 5)
+                            {
+
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Editar", "Edit", new { id = item.id_invoice }, new { @class = "btn btn-primary mr-2" })
+                            }
+                            @Html.ActionLink("Detalle", "Details", new { id = item.id_invoice }, new { @class = "btn btn-primary" })
                         </td>
                     </tr>
                 }

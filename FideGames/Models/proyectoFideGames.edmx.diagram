@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="proyectoFideGamesModel.deparment_product" Width="1.5" PointX="0.5" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoFideGamesModel.Employee" Width="1.5" PointX="4.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoFideGamesModel.invoice" Width="1.5" PointX="9.625" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="proyectoFideGamesModel.invoice_detail" Width="1.5" PointX="5.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoFideGamesModel.invoice_detail" Width="1.5" PointX="5.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoFideGamesModel.invoice_status" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoFideGamesModel.product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoFideGamesModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="0.5" IsExpanded="true" />

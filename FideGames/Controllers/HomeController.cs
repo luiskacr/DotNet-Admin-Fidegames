@@ -22,6 +22,7 @@ namespace FideGames.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            ViewBag.Sells = db.invoice.Count().ToString();
             return View();
         }
 
